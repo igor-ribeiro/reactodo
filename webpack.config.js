@@ -3,7 +3,7 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const htmlWebpackConfig = {
-  title: 'ReacTodo',
+  title: 'React Simple Starter',
   template: './src/index.html',
   minify: {
     removeScriptTypeAttributes: true,
@@ -16,7 +16,7 @@ module.exports = {
   entry: './src/app.js',
   output: {
     path: './public',
-    filename: 'app.js'
+    filename: 'app.js',
   },
   module: {
     loaders: [
