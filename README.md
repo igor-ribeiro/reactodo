@@ -6,7 +6,7 @@ Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas Rea
 - [Instalação e configuração inicial](#instalação-e-configuração-inicial)
 - [React](#react)
 - [Por que React?](#por-que-react)
--- [One-way-data-binding](#one-way-data-binding)
+  - [One-way-data-binding](#one-way-data-binding)
 - [Pondo a mão na massa](#pondo-a-mão-na-massa)
 
 ## Instalação e configuração inicial
