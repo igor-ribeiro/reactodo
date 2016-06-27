@@ -4,6 +4,8 @@ Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas Rea
 
 # Sumário
 - [Instalação e configuração inicial](#instalação-e-configuração-inicial)
+- [React](#react)
+- [Pondo a mão na massa](#pondo-a-mão-na-massa)
 
 ## Instalação e configuração inicial
 Clone o repositório ```git@github.com:igor-ribeiro/react-simple-starter.git NOME_DA_PASTA```.
@@ -27,3 +29,56 @@ Segundo o [site oficial](https://facebook.github.io/react/), React é uma biblio
 Apesar desse slogan ```A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES```, você consegue criar aplicações completas em React, como nós faremos como nosso TodoApp, carinhosamente chamado de ReacTodo.
 
 **Usaremos ES6 :D**
+
+## Pondo a mão na massa
+
+Vamos começar adicionando React na nossa página. Abra o arquivo ```src/app.js```. Ele deve ser parecido com:
+
+```jsx
+'use strict';
+
+console.log('just react it!');
+```
+Apague a linha do ```console.log``` e me acompanhe.
+
+Vamos começar importando o React e ReactDOM.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+```
+
+ReactDOM é o cara responsável por adicionar nosso componente na DOM (logo veremos isso).
+
+Vamos criar um super componente que imprime um título 'Hello, React!'.
+
+```jsx
+class HelloComponent extends React.Component {
+  render() {
+    return <h1>Hello, React!</h1>;
+  }
+}
+```
+
+**PARA TUDO, QUE M&%$ É ESSA??**
+
+Não, você não está louco, fizemos isso mesmo. Nosso HTML agora faz parte do JS.
+Mas pode isso, Arnaldo? Pode sim, graças ao JSX. Você não precisa escrever React dessa maneira, mas para de ser chato!
+
+Se você acessar a página não vai ver nada, é aí que entra o nosso amigo ReactDOM. Bora renderizar nosso componente massa!
+
+```jsx
+ReactDOM.render(<HelloComponent />, document.getElementById('app'));
+```
+
+Agora você deve ver 'Hello, React!' na página.
+
+Viu? Ótimo, agora vamos entender umas paradas.
+
+Notaram que o nossa classe se tornou um 'elemento' HTML? A ideia do React é essa, nós vamos criar componentes e usá-los como se fossem elementos HTML.
+
+Legal, mas e isso ```document.getElementById('app')```? Aqui nós falamos para o React onde ele deve renderizar nosso componente. Se você abrir o arquivo ```src/index.html``` vai ver que lá existe ```<div id="app">```, então é dentro desse cara que nosso componente será renderizado.
+
+Está duvidando? Abra a inspeção de elementos do seu navegador, vai ver que dentro da div existe o conteúdo do nosso componente, algo parecido com ```<h1 data-reactroot>Hello, React!</h1>```
+
+Entendeu o porquê do React não atrapalhar código existente no seu projeto? Basta dizer em qual elemento seu novo componente estará e pronto. It works :D
