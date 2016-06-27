@@ -43,7 +43,7 @@ Então, no React, você sempre precisará alterar o estado de forma declarativa 
 
 ### Virtual DOM
 
-O React é rápido porque cria uma representação da DOM em memória, e é nessa representação que ele vai calcular as diferenças para decidir se um componente precisa ser atualizado ou não. Ele faz isso para diminuir o número de operação na DOM, pois isso é um trabalho custoso. Outras bibliotecas estão adotando isso, inclusive AngularJS na versão 2 ;)
+O React é rápido porque cria uma representação da DOM em memória, e é nessa representação que ele vai calcular as diferenças para decidir se um componente precisa ser atualizado ou não. Ele faz isso para diminuir o número de operações na DOM, pois isso é um trabalho custoso. Outras bibliotecas estão adotando isso, inclusive AngularJS na versão 2 ;)
 
 ## Pondo a mão na massa
 
