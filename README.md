@@ -43,7 +43,7 @@ Apague a linha do ```console.log``` e me acompanhe.
 
 Vamos começar importando o React e ReactDOM.
 
-```jsx
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 ```
