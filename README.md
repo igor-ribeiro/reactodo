@@ -5,6 +5,8 @@ Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas Rea
 # Sumário
 - [Instalação e configuração inicial](#instalação-e-configuração-inicial)
 - [React](#react)
+- [Por que React?](#por-que-react)
+-- [One-way-data-binding][#one-way-data-binding]
 - [Pondo a mão na massa](#pondo-a-mão-na-massa)
 
 ## Instalação e configuração inicial
@@ -29,6 +31,16 @@ Segundo o [site oficial](https://facebook.github.io/react/), React é uma biblio
 Apesar desse slogan ```A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES```, você consegue criar aplicações completas em React, como nós faremos como nosso TodoApp, carinhosamente chamado de ReacTodo.
 
 **Usaremos ES6 :D**
+
+## Por que React?
+
+As coisas que mais chamam a atenção no React são:
+
+### One-way-data-binding
+
+Se você já usou AngularJS sabe que o estado da aplicação pode ser alterado de duas maneiras, na view e no controller, o famoso ```two-way-data-binding```. Mas os engenheiros do Facebook não acreditam que essa seja a melhor maneira, pois o seu estado fica muito 'solto', elem acreditam que o estado deve ser modificado no menor número de lugares possível.
+
+Então, no React, você sempre precisará alterar o estado de forma declarativa através da função ```setState```. Não se preocupe, veremos isso mais pra frente.
 
 ## Pondo a mão na massa
 
