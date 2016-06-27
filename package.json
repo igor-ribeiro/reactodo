@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/igor-ribeiro/reactodo.git"
+    "url": "git+https://github.com/igor-ribeiro/react-simple-starter.git"
   },
   "author": "Igor Ribeiro <igor.ribeiro.plus@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/igor-ribeiro/reactodo/issues"
+    "url": "https://github.com/igor-ribeiro/react-simple-starter/issues"
   },
-  "homepage": "https://github.com/igor-ribeiro/reactodo#readme"
+  "homepage": "https://github.com/igor-ribeiro/react-simple-starter#readme"
 }
