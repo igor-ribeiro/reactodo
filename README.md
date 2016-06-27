@@ -1,20 +1,26 @@
-Estrutura inicial simples para um projeto em React
+# Tutorial de React
 
-## Instruções
+Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas React, já deixei uma estrutura pronta pra focarmos apenas nele.
 
-Instale as dependências ```npm i```
+## Instalação e configuração inicial
+Clone o repositório ```git@github.com:igor-ribeiro/react-simple-starter.git NOME_DA_PASTA```.
 
-Os seguintes pacotes precisam estar instalados globalmente:
-- webpack
-- webpack-dev-server
+Entre na pasta do app.
 
-```npm i -g webpack webpack-dev-server```
+Remova a origem do repositório ```git remote remove origin``` e adicione um seu ```git remote add origin git@github.com/USUARIO/REPOSITORIO```
 
-Rode o comando ```webpack-dev-server --content-base public/ --inline``` para iniciar um servidor local com hot-reload ativado.
-Acesse ```http://localhost:8080```
+Instale as dependências ```npm install```
 
-Não se esqueça de alterar a origem remota do git para o seu repositório.
+Instale globalmente o webpack e webpack-dev-server ``` npm i -g webpack webpack-dev-server```
 
-Primeiro remova a origem atual ```git remote remove origin```.
+Inicie o servidor ```webpack-dev-server --content-base public/ --inline```. Acesse o projeto em ```http://localhost:8080/``` e você verá no console ```just react it!```. Pronto, podemos começar.
 
-E adicione o seu repositório ```git remote add origin git@github.com:USUARIO/REPOSITORIO```
+O projeto final pode ser encontrado em: ```https://github.com/igor-ribeiro/reactodo```
+
+## React
+
+Segundo o [site oficial](https://facebook.github.io/react/), React é uma biblioteca para a criação de interfaces de usuário, ou seja, seria a View do MVC. React é declarivo, baseado em componente e uma biblioteca livre, possibilitando a criação de novas funcionalidades usando React sem afetar o código existente.
+
+Apesar desse slogan ```A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES```, você consegue criar aplicações completas em React, como nós faremos como nosso TodoApp, carinhosamente chamado de ReacTodo.
+
+**Usaremos ES6 :D**
