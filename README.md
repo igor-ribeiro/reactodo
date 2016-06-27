@@ -2,6 +2,9 @@
 
 Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas React, já deixei uma estrutura pronta pra focarmos apenas nele.
 
+# Sumário
+- [Instalação e configuração inicial](#instalação-e-configuração-inicial)
+
 ## Instalação e configuração inicial
 Clone o repositório ```git@github.com:igor-ribeiro/react-simple-starter.git NOME_DA_PASTA```.
 
