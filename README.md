@@ -14,6 +14,9 @@ Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas Rea
   - [AppBar](#appbar)
   - [Estilo no Javascript](#estilo-no-javascript)
   - [Listar todos](#listar-todos)
+  - [Separando os componentes](#separando-os-componentes)
+    - [Separando AppBar](#separando-appbar)
+    - [Separando todos](#separando-todos)
 
 ## Instalação e configuração inicial
 Clone o repositório ```git@github.com:igor-ribeiro/react-simple-starter.git NOME_DA_PASTA```.
@@ -440,3 +443,101 @@ ReactDOM.render(<ReacTodo />, document.getElementById('app'));
 ```
 
 Convenhamos que já está ficando bagunçado né? Bora separar isso?
+
+### Separando os componentes
+
+#### Separando AppBar
+
+A gente nem fez tanta coisa assim, mas já está ficando confuso.
+
+Vamos começar seprando o AppBar.
+
+Crie o arquivo ```src/components/common/app-bar.js```
+```js
+'use strict';
+
+import React from 'react';
+
+import AppBar from 'material-ui/AppBar';
+
+export default () => {
+  return <AppBar title="ReacTodo" showMenuIconButton={false} style={styles.appBar}/>
+}
+
+const styles = {
+  appBar: {
+    padding: '0 20%',
+  },
+};
+```
+
+```export default () => {``` é o mesmo que ```module.exports = function () {```.
+
+Nosso ```app.js``` vai ficar assim:
+```js
+'use strict';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Paper from 'material-ui/Paper';
+
+import AppBar from './components/common/app-bar';
+
+class ReacTodo extends React.Component {
+  render() {
+    const todos = ['Listar todos', 'Adicionar todo', 'Editar todo', 'Remover todo', 'Filtrar todo'];
+
+    return (
+      <MuiThemeProvider>
+        <div>
+          <AppBar />
+
+          <div style={styles.mainContent}>
+            {todos.map((todo, key) => { return <Paper style={styles.todo} key={key}>{todo}</Paper>; })}
+          </div>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+const styles = {
+  todo: {
+    padding: 20,
+  },
+
+  mainContent: {
+    padding: '20px 20%',
+  },
+};
+
+ReactDOM.render(<ReacTodo />, document.getElementById('app'));
+```
+
+Espera aí, vai funcionar? Não estamos criando uma classe AppBar e extendendo de ```React.Component```.
+
+E agora você aprende outro conceito bacana.
+
+**Stateless Component**
+
+Como nosso AppBar não vai manusear estado nenhum, não será um componente dinâmico, ele não precisa de nada além de retornar um componente. Mais pra frente veremos que os componentes do React possuem um ciclo de vida e com isso teremos alguns métodos a nossa disposição para interafir com esse ciclo, porém para componentes simples, como nosso AppBar, esse ciclo é irrelevante. Então podemos usar funções que retornem um componente. Simples assim. Na verdade nós já fizemos isso, dê uma olhada em como renderizamos cada todo. ;)
+
+E se quisermos deixar o AppBar mais reusável, permitindo alterar o título, por exemplo.
+
+Façamos o seguinte em ```app-bar.js```
+```js
+export default (props) => {
+  return <AppBar title={props.title || 'App Title'} showMenuIconButton={false} style={styles.appBar}/>
+}
+```
+
+Vamos receber ```props``` como parâmetro e em title nós vamos mostrar o título que vier em props ou vamos mostrar "App title" por padrão. E como passamos o título? Vá em ```app.js``` e passe o título como se fosse um atributo HTML para AppBar
+```jsx
+<AppBar title="ReacTodo"/>
+```
+
+Pronto, agora você aprender a passar parâmetros para componentes. \o/
+
+#### Separando todos
