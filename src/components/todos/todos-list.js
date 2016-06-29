@@ -7,7 +7,7 @@ import Paper from 'material-ui/Paper';
 export default (props) => {
   return (
       <div style={styles.mainContent}>
-        {props.todos.map((todo, key) => { return <Paper style={styles.todo} key={key}>{todo}</Paper>; })}
+        {props.todos.map((todo, key) => { return <Paper style={styles.todo} key={key} onDoubleClick={() => props.handleRemoveTodo(todo)}>{todo}</Paper>; })}
       </div>
   );
 };

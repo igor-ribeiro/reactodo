@@ -17,6 +17,8 @@ Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas Rea
   - [Separando os componentes](#separando-os-componentes)
     - [Separando AppBar](#separando-appbar)
     - [Separando todos](#separando-todos)
+  - [Manipulando estado](#manipulando-estado)
+  - [Removendo todo](#removendo-todo)
 
 ## Instalação e configuração inicial
 Clone o repositório ```git@github.com:igor-ribeiro/react-simple-starter.git NOME_DA_PASTA```.
@@ -620,3 +622,66 @@ ReactDOM.render(<ReacTodo />, document.getElementById('app'));
 ```
 
 Bem melhor né? Agora vamos deixar nosso app dinâmico manipulando o estado do nosso componente. Aguenta firme.
+
+### Manipulando estado
+
+Antes, vamos importar o lodash, se você não conhece, [conheça](https://lodash.com/docs).
+
+```npm i --save lodash```
+
+Depois importe ```import _ from 'lodash'```
+
+Vamos remover a variável todos do método render e vamos adicionar no estado da nosso componente. Estado em React pode ser considerado o equivalente ao $scope no Angular.
+
+Para isso precisamos chamar o método ```contructor``` que faz parte da especificação ES6 para classes.
+
+```js
+class ReacTodo extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todos: ['Listar todos', 'Adicionar todo', 'Editar todo', 'Remover todo', 'Filtrar todo'],
+    };
+  }
+```
+
+Por que ```super(props)```? Porque não podemos usar o this sem chamar o construtor da classe que estamos estendo, no casso a classe ```Component```
+
+Agora precisamos mudar a maneira que passamos os todos para o componente ```TodosList```
+
+```js
+<TodosList todos={this.state.todos}/>
+```
+
+Só pra gente entender como manipular estado vamos fazer o seguinte: remover um todo quando clicarmos duas vezes sobre o mesmo.
+
+#### Removendo todo
+
+Vamos criar o método de remover no nosso componente principal, pois o estado está nele. Eu adiciono métodos sempre depois do ```render```, exceto o ```constructor```, pois pra mim faz mais sentido ter o método ```render``` mais visivel.
+
+```js
+class ReacTodo extends React.Component {
+  constructor() {
+    // as mesmas paradas de antes
+
+    this.handleRemoveTodo = this.handleRemoveTodo.bind(this);
+  }
+  render() {}
+
+  handleRemoveTodo(todo) {
+    const todos = _.difference(this.state.todos, [todo]);
+
+    this.setState({ todos });
+  }
+
+```this.handleRemoveTodo = this.handleRemoveTodo.bind(this);``` essa linha serve para normalizar o ```this``` dentro do método ```handleRemoveTodo``` pois chamaremos ele através de um click, e o ```this``` se tornaria o elemento em que clicamos.
+
+Agora vamos para ```todos-list.js``` e vamos adicionar ```onDoubleClick``` no componente ```Paper```
+```jsx
+{props.todos.map((todo, key) => { return <Paper style={styles.todo} key={key} onDoubleClick={props.handleRemoveTodo.bind(null, todo)}>{todo}</Paper>; })}
+```
+
+```onDoubleClick={() => props.handleRemoveTodo(todo)}``` podemos substituir isso por ```onDoubleClick={props.handleRemoveTodo.bind(null, todo)}```, fica a seu critério.
+
+Se você clicar duas vezes sobre um todo ele deve sumir. Se sumiu, parabéns. :D
