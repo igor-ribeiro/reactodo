@@ -11,6 +11,8 @@ Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas Rea
 - [Pondo a mão na massa](#pondo-a-mão-na-massa)
 - [Pondo a mão na massa pra valer](#pondo-a-mão-na-massa-pra-valer)
   - [Material UI](#material-ui)
+  - [AppBar](#appbar)
+  - [Estilo no Javascript](#estilo-no-javascript)
 
 ## Instalação e configuração inicial
 Clone o repositório ```git@github.com:igor-ribeiro/react-simple-starter.git NOME_DA_PASTA```.
@@ -209,6 +211,41 @@ Mas não vamos precisar do ícone do menu, bora resolver isso?
 
 Mas Igor, por que não definimos falso igual no HTML? ```showMenuIconButton="false"```? Muito bem, meu jovem. Porque dessa forma o React entenderia ```false``` como um texto e não um valor booleano. Boa pergunta! ;)
 
-Mas e se eu quiser deixar assim?
+Mas Igor, e se eu quiser deixar assim?
 ![app-bar com estilo](example-images/app-bar-with-style.png)
 
+Caraca muleque, cheio das perguntaas boladas, ein? Vamos ver essa fita então.
+
+### Estilo no Javascript
+
+Seguinte, mesmo com React você ainda pode usar CSS. Basta  adicionar uma classe para o seu componente.
+
+**CUIDADO!**
+
+Como ```class``` é uma palavra reservada do Javascript você deve definir classes de CSS usando ```className```. Isso serve para ```for``` também, você usa em React como ```htmlFor```. (Padrão zero, mas OK).
+
+Mas hoje vou ensinar de outra maneira, que você talvez odeiem. Vamos declarar o CSS no Javascript, em forma de objeto. Siga-me.
+
+Vamos definir uma váriavel que vai conter nossos estilos.
+
+```js
+const styles = {
+  appBar: {
+    padding: '0 20%',
+  },
+};
+```
+
+Agora vamos adicionar no nosso AppBar maroto.
+
+```js
+<AppBar title="ReacTodo" showMenuIconButton={false} style={styles.appBar}/>
+```
+
+Obrigado, de nada.
+
+As propriedades de CSS possuem o mesmo nome, porém em camelCase, por exemplo ```background-color``` fica ```backgroundColor```.
+
+Para valores únicos em ```px``` use inteiros, por exemplo ```width: 100px;``` fica ```width: 100```, ```font-size: 30px;``` fica ```fontSize: 30```. Caso o valor não seja único, coloque numa string, por exemplo ```margin: 20px 40px``` fica ```margin: '20px 40px'```.
+
+[Documentação](https://facebook.github.io/react/tips/inline-styles.html).
