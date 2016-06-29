@@ -675,6 +675,7 @@ class ReacTodo extends React.Component {
 
     this.setState({ todos });
   }
+```
 
 ```this.handleRemoveTodo = this.handleRemoveTodo.bind(this);``` essa linha serve para normalizar o ```this``` dentro do método ```handleRemoveTodo``` pois chamaremos ele através de um click, e o ```this``` se tornaria o elemento em que clicamos.
 
