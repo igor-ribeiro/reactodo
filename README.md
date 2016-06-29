@@ -9,6 +9,8 @@ Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas Rea
   - [One-way-data-binding](#one-way-data-binding)
   - [Virtual DOM](#virtual-dom)
 - [Pondo a mão na massa](#pondo-a-mão-na-massa)
+- [Pondo a mão na massa pra valer](#pondo-a-mão-na-massa-pra-valer)
+  - [Material UI](#material-ui)
 
 ## Instalação e configuração inicial
 Clone o repositório ```git@github.com:igor-ribeiro/react-simple-starter.git NOME_DA_PASTA```.
@@ -43,7 +45,7 @@ Então, no React, você sempre precisará alterar o estado de forma declarativa 
 
 ### Virtual DOM
 
-O React é rápido porque cria uma representação da DOM em memória, e é nessa representação que ele vai calcular as diferenças para decidir se um componente precisa ser atualizado ou não. Ele faz isso para diminuir o número de operações na DOM, pois isso é um trabalho custoso. Outras bibliotecas estão adotando isso, inclusive AngularJS na versão 2 ;)
+O React é rápido porque cria uma representação da DOM em memória, e é nessa representação que ele vai calcular as diferenças para decidir se um componente precisa ser atualizado ou não. Ele faz isso para diminuir o número de operações na DOM, pois isso é um trabalho custoso. Outras bibliotecas estão adotando isso, inclusive AngularJS na versão 2 ;).
 
 ## Pondo a mão na massa
 
@@ -97,3 +99,46 @@ Legal, mas e isso ```document.getElementById('app')```? Aqui nós falamos para o
 Está duvidando? Abra a inspeção de elementos do seu navegador, vai ver que dentro da div existe o conteúdo do nosso componente, algo parecido com ```<h1 data-reactroot>Hello, React!</h1>```
 
 Entendeu o porquê do React não atrapalhar código existente no seu projeto? Basta dizer em qual elemento seu novo componente estará e pronto. It works :D
+
+## Pondo a mão na massa pra valer
+
+Ótimo, agora você já é quase um sênior em React :P. Então vamos começar nosso TodoApp de verdade, e no caminho vamos entendendo algumas paradas novas.
+
+### Material UI
+
+Como nós somos cool, vamos usar Material Design, então instale os seguinte pacotes:
+
+```npm i --save react-tap-event-plugin material-ui```
+
+Nãoo se esquece de importar a fonte Roboto no arquivo ```src/index.html```
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900">
+```
+
+Todos os componentes que formos usar do ```material-ui``` devem ficar dentro do componente ```MuiThemeProvider```. Para testarmos a intalação do material-ui, altere o ```app.js``` para ficar assim:
+
+```html
+'use strict';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+
+class HelloComponent extends React.Component {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <RaisedButton label="Funcionoooooooou"/>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+ReactDOM.render(<HelloComponent />, document.getElementById('app'));
+```
+
+Viu que bonito o botão? :B
+
