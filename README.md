@@ -538,6 +538,6 @@ Vamos receber ```props``` como parâmetro e em title nós vamos mostrar o títul
 <AppBar title="ReacTodo"/>
 ```
 
-Pronto, agora você aprender a passar parâmetros para componentes. \o/
+Pronto, agora você aprendeu a passar parâmetros para componentes. \o/
 
 #### Separando todos
