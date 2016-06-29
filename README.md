@@ -749,4 +749,4 @@ const styles = {
 
 Perceba que eu já refatorei para o todo ser um componente separado.
 
-![todos-list-with-remove-button](ewith-remove-buttonxample-images/todos-list-with-remove-button.png)
+![todos-list-with-remove-button](example-images/todos-list-with-remove-button.png)
