@@ -51,7 +51,7 @@ O React é rápido porque cria uma representação da DOM em memória, e é ness
 
 Vamos começar adicionando React na nossa página. Abra o arquivo ```src/app.js```. Ele deve ser parecido com:
 
-```jsx
+```js
 'use strict';
 
 console.log('just react it!');
@@ -69,7 +69,7 @@ ReactDOM é o cara responsável por adicionar nosso componente na DOM (logo vere
 
 Vamos criar um super componente que imprime um título 'Hello, React!'.
 
-```jsx
+```js
 class HelloComponent extends React.Component {
   render() {
     return <h1>Hello, React!</h1>;
@@ -84,7 +84,7 @@ Mas pode isso, Arnaldo? Pode sim, graças ao JSX. Você não precisa escrever Re
 
 Se você acessar a página não vai ver nada, é aí que entra o nosso amigo ReactDOM. Bora renderizar nosso componente massa!
 
-```jsx
+```js
 ReactDOM.render(<HelloComponent />, document.getElementById('app'));
 ```
 
@@ -118,7 +118,7 @@ Nãoo se esquece de importar a fonte Roboto no arquivo ```src/index.html```
 
 Todos os componentes que formos usar do ```material-ui``` devem ficar dentro do componente ```MuiThemeProvider```. Para testarmos a intalação do material-ui, altere o ```app.js``` para ficar assim:
 
-```jsx
+```js
 'use strict';
 
 import React from 'react';
@@ -190,7 +190,7 @@ import AppBar from 'material-ui/AppBar';
 
 Agora é só adicionar no nosso componente principal.
 
-```jsx
+```js
 return (
   <MuiThemeProvider>
     <AppBar title="ReacTodo"/>
