@@ -201,3 +201,14 @@ return (
 Saca só que maaaaaaassa!
 ![app-bar](example-images/app-bar.png "Nossa AppBar linda <3")
 
+Mas não vamos precisar do ícone do menu, bora resolver isso?
+```js
+<AppBar title="ReacTodo" showMenuIconButton={false}/>
+```
+![app-bar](example-images/app-bar-without-menu.png "Nossa AppBar linda <3")
+
+Mas Igor, por que não definimos falso igual no HTML? ```showMenuIconButton="false"```? Muito bem, meu jovem. Porque dessa forma o React entenderia ```false``` como um texto e não um valor booleano. Boa pergunta! ;)
+
+Mas e se eu quiser deixar assim?
+![app-bar com estilo](example-images/app-bar-with-style.png)
+
