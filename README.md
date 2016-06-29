@@ -144,3 +144,15 @@ Viu que bonito o botão? :B
 
 [Documentação do Material UI](http://www.material-ui.com/)
 
+**Psiu**
+
+Remova o ```margin``` e ```padding``` do ```body``` em ```src/index.html```:
+```html
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+```
+
