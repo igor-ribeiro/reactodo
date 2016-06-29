@@ -541,3 +541,82 @@ Vamos receber ```props``` como parâmetro e em title nós vamos mostrar o títul
 Pronto, agora você aprendeu a passar parâmetros para componentes. \o/
 
 #### Separando todos
+
+Na mesma pegada do AppBar, vamos mover a parte de listar os todos para um componente separado.
+
+Crie o arquivo ```src/components/todos/todos-list.js```
+```js
+'use strict';
+
+import React from 'react';
+
+import Paper from 'material-ui/Paper';
+
+export default (props) => {
+  return (
+      <div style={styles.mainContent}>
+        {props.todos.map((todo, key) => { return <Paper style={styles.todo} key={key}>{todo}</Paper>; })}
+      </div>
+  );
+};
+
+const styles = {
+  todo: {
+    padding: 20,
+  },
+
+  mainContent: {
+    padding: '20px 20%',
+  },
+};
+```
+
+Importe o componente
+```js
+import TodosList from './components/todos/todos-list';
+```
+
+E substitua a parte que renderizava os todos em ```app.js```
+
+```jsx
+// Antes
+<div style={styles.mainContent}>
+  {todos.map((todo, key) => { return <Paper style={styles.todo} key={key}>{todo}</Paper>; })}
+</div>
+
+// Depois
+<TodosList todos={todos}/>
+```
+
+Agora nosso ```app.js``` completo ficou assim
+```js
+'use strict';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import AppBar from './components/common/app-bar';
+import TodosList from './components/todos/todos-list';
+
+class ReacTodo extends React.Component {
+  render() {
+    const todos = ['Listar todos', 'Adicionar todo', 'Editar todo', 'Remover todo', 'Filtrar todo'];
+
+    return (
+      <MuiThemeProvider>
+        <div>
+          <AppBar title="ReacTodo"/>
+
+          <TodosList todos={todos}/>
+        </div>
+      </MuiThemeProvider>
+    );
+  };
+}
+
+ReactDOM.render(<ReacTodo />, document.getElementById('app'));
+```
+
+Bem melhor né? Agora vamos deixar nosso app dinâmico manipulando o estado do nosso componente. Aguenta firme.
