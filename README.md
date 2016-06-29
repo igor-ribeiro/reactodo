@@ -667,6 +667,7 @@ class ReacTodo extends React.Component {
 
     this.handleRemoveTodo = this.handleRemoveTodo.bind(this);
   }
+
   render() {}
 
   handleRemoveTodo(todo) {
@@ -685,3 +686,67 @@ Agora vamos para ```todos-list.js``` e vamos adicionar ```onDoubleClick``` no co
 ```onDoubleClick={() => props.handleRemoveTodo(todo)}``` podemos substituir isso por ```onDoubleClick={props.handleRemoveTodo.bind(null, todo)}```, fica a seu critério.
 
 Se você clicar duas vezes sobre um todo ele deve sumir. Se sumiu, parabéns. :D
+
+Vamos melhorar isso. Vamos criar um botão para remover. Como o foco não é esse, segue abaixo como deve ficar seus arquivos.
+
+Crie um arquivo ```src/componentes/todos/todo.js```
+```js
+'use strict';
+
+import React from 'react';
+
+import Paper from 'material-ui/Paper';
+import IconButton from 'material-ui/IconButton';
+import DeleteIcon from 'material-ui/svg-icons/content/clear';
+
+export default (props) => {
+  return (
+    <Paper style={styles.todo}>
+      <div style={styles.todoText}>{props.todo}</div>
+      <IconButton onClick={() => props.handleRemoveTodo(props.todo)}><DeleteIcon /></IconButton>
+    </Paper>
+  );
+};
+
+const styles = {
+  todo: {
+    padding: 12,
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+
+  todoText: {
+    flex: 1,
+  },
+};
+```
+
+```src/components/todos/todos-list.js```
+```js
+'use strict';
+
+import React from 'react';
+
+import Todo from './todo';
+
+export default (props) => {
+  return (
+      <div style={styles.mainContent}>
+        {props.todos.map((todo, key) => {
+          return <Todo todo={todo} key={key} handleRemoveTodo={props.handleRemoveTodo}/>
+        })}
+      </div>
+  );
+};
+
+const styles = {
+  mainContent: {
+    padding: '20px 20%',
+  },
+};
+```
+
+Perceba que eu já refatorei para o todo ser um componente separado.
+
+![todos-list-with-remove-button](ewith-remove-buttonxample-images/todos-list-with-remove-button.png)

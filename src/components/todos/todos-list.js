@@ -2,21 +2,19 @@
 
 import React from 'react';
 
-import Paper from 'material-ui/Paper';
+import Todo from './todo';
 
 export default (props) => {
   return (
       <div style={styles.mainContent}>
-        {props.todos.map((todo, key) => { return <Paper style={styles.todo} key={key} onDoubleClick={() => props.handleRemoveTodo(todo)}>{todo}</Paper>; })}
+        {props.todos.map((todo, key) => {
+          return <Todo todo={todo} key={key} handleRemoveTodo={props.handleRemoveTodo}/>
+        })}
       </div>
   );
 };
 
 const styles = {
-  todo: {
-    padding: 20,
-  },
-
   mainContent: {
     padding: '20px 20%',
   },
