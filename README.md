@@ -690,7 +690,7 @@ Se você clicar duas vezes sobre um todo ele deve sumir. Se sumiu, parabéns. :D
 
 Vamos melhorar isso. Vamos criar um botão para remover. Como o foco não é esse, segue abaixo como deve ficar seus arquivos.
 
-Crie um arquivo ```src/componentes/todos/todo.js```
+Crie um arquivo ```src/componentes/todos/todo.js```.
 
 ```js
 'use strict';
@@ -724,7 +724,7 @@ const styles = {
 };
 ```
 
-```src/components/todos/todos-list.js```
+Altere o ```src/components/todos/todos-list.js```
 
 ```js
 'use strict';
