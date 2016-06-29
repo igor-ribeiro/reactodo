@@ -118,7 +118,7 @@ Nãoo se esquece de importar a fonte Roboto no arquivo ```src/index.html```
 
 Todos os componentes que formos usar do ```material-ui``` devem ficar dentro do componente ```MuiThemeProvider```. Para testarmos a intalação do material-ui, altere o ```app.js``` para ficar assim:
 
-```html
+```jsx
 'use strict';
 
 import React from 'react';
@@ -155,4 +155,49 @@ Remova o ```margin``` e ```padding``` do ```body``` em ```src/index.html```:
     }
   </style>
 ```
+
+### AppBar
+
+Vamos 'começar' criando um AppBar.
+
+Deixa o ```app.js``` assim:
+
+```jsx
+'use strict';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+class ReacTodo extends React.Component {
+  render() {
+    return (
+      <MuiThemeProvider>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+ReactDOM.render(<ReacTodo />, document.getElementById('app'));
+```
+
+Vamos importar o componente ```AppBar```
+
+```js
+import AppBar from 'material-ui/AppBar';
+```
+
+Agora é só adicionar no nosso componente principal.
+
+```jsx
+    return (
+      <MuiThemeProvider>
+        <AppBar title="ReacTodo"/>
+      </MuiThemeProvider>
+    );
+```
+
+[[https://github.com/igor-ribeiro/reactodo/blob/master/example-images/app-bar.png|alt=AppBar]]
+Saca só que maaaaaaassa!
 
