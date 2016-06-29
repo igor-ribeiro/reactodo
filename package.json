@@ -4,8 +4,10 @@
   "description": "",
   "main": "src/app.js",
   "dependencies": {
+    "material-ui": "^0.15.1",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "react-tap-event-plugin": "^1.0.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
