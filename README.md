@@ -162,7 +162,7 @@ Vamos 'começar' criando um AppBar.
 
 Deixa o ```app.js``` assim:
 
-```jsx
+```js
 'use strict';
 
 import React from 'react';
@@ -191,11 +191,11 @@ import AppBar from 'material-ui/AppBar';
 Agora é só adicionar no nosso componente principal.
 
 ```jsx
-    return (
-      <MuiThemeProvider>
-        <AppBar title="ReacTodo"/>
-      </MuiThemeProvider>
-    );
+return (
+  <MuiThemeProvider>
+    <AppBar title="ReacTodo"/>
+  </MuiThemeProvider>
+);
 ```
 
 [[https://github.com/igor-ribeiro/reactodo/blob/master/example-images/app-bar.png|alt=AppBar]]
