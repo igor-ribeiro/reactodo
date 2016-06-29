@@ -148,12 +148,12 @@ Viu que bonito o botão? :B
 
 Remova o ```margin``` e ```padding``` do ```body``` em ```src/index.html```:
 ```html
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>
 ```
 
 ### AppBar
