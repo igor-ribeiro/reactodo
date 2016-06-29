@@ -720,6 +720,7 @@ const styles = {
 
   todoText: {
     flex: 1,
+    paddingLeft: 12,
   },
 };
 ```
