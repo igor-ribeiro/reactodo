@@ -13,6 +13,7 @@ Vamos fazer um TodoApp usando React virgem. Como o escopo do curso é apenas Rea
   - [Material UI](#material-ui)
   - [AppBar](#appbar)
   - [Estilo no Javascript](#estilo-no-javascript)
+  - [Listar todos](#listar-todos)
 
 ## Instalação e configuração inicial
 Clone o repositório ```git@github.com:igor-ribeiro/react-simple-starter.git NOME_DA_PASTA```.
@@ -249,3 +250,193 @@ As propriedades de CSS possuem o mesmo nome, porém em camelCase, por exemplo ``
 Para valores únicos em ```px``` use inteiros, por exemplo ```width: 100px;``` fica ```width: 100```, ```font-size: 30px;``` fica ```fontSize: 30```. Caso o valor não seja único, coloque numa string, por exemplo ```margin: 20px 40px``` fica ```margin: '20px 40px'```.
 
 [Documentação](https://facebook.github.io/react/tips/inline-styles.html).
+
+### Listar todos
+
+Por enquanto vamos criar uma lista com os todos dentro do método render.
+
+```js
+render() {
+    const todos = ['Listar todos', 'Adicionar todo', 'Editar todo', 'Remover todo', 'Filtrar todo'];
+
+    // continuação do método
+}
+```
+
+Vamos usar o elemento Paper para os todos, então devemos importá-lo.
+
+```js
+import Paper from 'material-ui/Paper';
+```
+
+Abaixo do AppBar, faça o seguinte:
+```js
+{todos.map((todo) => { return <Paper>{todo}</Paper>; })}
+```
+
+Igor, WTH????
+
+É, eu sei. Vou explicar.
+
+Se você já trabalhou com AngularJS sabe que devemos usar ```{{}}``` pra expressões, certo? Em React usamos ```{}```.
+
+```todos.map((todo) => { ... })``` isso aqui é ES6, bro! Chamamos de Arrow Functions, é uma nova maneira de declarar uma função, o equivalente ao ES5 seria ```todos.map(function (todo) { ... })```. Começou a entender né?! Vai flagrando.
+
+```js
+return <Paper>{todo}</Paper>;
+```
+
+Para cada todo na lista, nós retornaremos um elemento Paper com o valor do todo.
+
+> Mas Igor, usando Arrow Function você não precisa declarar o ```return``` caso retorne apenas uma linha.
+
+Isso é verdade, meu jovem. Porém, como o React usa ```{}``` pra interpolação, nosso compilador não vai entender se esse símbolo é para o bloco de return ou para o React, sacou?
+
+Aproveitando, perceberam que não coloquei o elemento Paper entre parênteses, diferente do return no método render? Pois é, você só precisa colocar entre parênteses quando for retornar mais de uma linha.
+
+Provavelmente você notou que deu erro, algo assim:
+
+```
+Warning: Failed propType: Invalid prop 'children' supplied to 'MuiThemeProvider', expected a single ReactElement. Check the render method of 'ReacTodo'.warning @ app.js:8583
+
+Uncaught Invariant Violation: MuiThemeProvider.render(): A valid React element (or null) must be returned. You may have returned undefined, an array or some other invalid object.
+```
+
+O elemento ```MuiThemeProvider``` só pode ter um filho, e no nosso caso, não tem. Vamos dar uma olhada return:
+```js
+return (
+  <MuiThemeProvider>
+      <AppBar title="ReacTodo" showMenuIconButton={false} titleStyle={styles.appBarTitle} style={styles.appBar}/>
+      {todos.map((todo) => { return <Paper>{todo}</Paper>; })}
+  </MuiThemeProvider>
+);
+```
+
+Isso se transformará em:
+
+```jsx
+  <MuiThemeProvider>
+      <AppBar title="ReacTodo" showMenuIconButton={false} titleStyle={styles.appBarTitle} style={styles.appBar}/>
+      <Paper>Listar todos</Paper>
+      <Paper>Adicionar todo</Paper>
+      <Paper>Editar todo</Paper>
+      <Paper>Remover todo</Paper>
+      <Paper>Filtrar todo</Paper>
+  </MuiThemeProvider>
+```
+
+Ou seja, o elemento ```MuiThemeProvider```  tem 6 filhos! Quase um Mr. Catra. Para resolver isso basta colocar todo mundo dentro de uma ```div```
+
+```jsx
+  <MuiThemeProvider>
+    <div>
+      <AppBar title="ReacTodo" showMenuIconButton={false} titleStyle={styles.appBarTitle} style={styles.appBar}/>
+      {todos.map((todo) => { return <Paper>{todo}</Paper>; })}
+    </div>
+  </MuiThemeProvider>
+```
+
+Entendeu?
+
+Mas você deve ter reparado em outro erro:
+```
+Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of 'ReacTodo'. See https://fb.me/react-warning-keys for more information.
+```
+
+Como estamos renderizando cada todo dentro de um loop, precisamos passar algum identificador único para cada elemento. Isso garante que o React faça as paradas certas nos elementos certos.
+
+```js
+{todos.map((todo, key) => { return <Paper key={key}>{todo}</Paper>; })}
+```
+
+Pronto, o segundo parâmetro de map é o index do item na lista, ou seja, o index do primeiro item será 0, do segundo será 1 e assim por diante.
+
+AGORA VAI. Nosso app deve estar assim:
+![todos-list](example-images/todos-list.png)
+
+FEIO PRA XUXU!
+
+Bora adicionar uns estilos.
+
+Adicione isso na variável de estilos:
+```js
+  todo: {
+    padding: 20,
+  },
+```
+
+E adicione o estilo no elemento.
+
+```jsx
+{todos.map((todo, key) => { return <Paper style={styles.todo} key={key}>{todo}</Paper>; })}
+```
+
+![todos-list-style](example-images/todos-list-style.png)
+
+Melhorou, mas nem tanto. Vamos alinhar os todos assim como fizemos no AppBar. Para isso, a listagem de todos deve ficar dentro de uma div.
+
+```jsx
+<div style={styles.mainContent}>
+  {todos.map((todo, key) => { return <Paper style={styles.todo} key={key}>{todo}</Paper>; })}
+</div>
+```
+
+Vamos criar o estilo do mainContent
+```js
+mainContent: {
+  padding: '20px 20%',
+},
+```
+
+![todos-list-pretty](example-images/todos-list-pretty.png)
+
+MAGNÍFICO.
+
+Fizemos coisa pra caramba, então segue nosso arquivo ```src/app.js```
+
+```js
+'use strict';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import Paper from 'material-ui/Paper';
+
+class ReacTodo extends React.Component {
+  render() {
+    const todos = ['Listar todos', 'Adicionar todo', 'Editar todo', 'Remover todo', 'Filtrar todo'];
+
+    return (
+      <MuiThemeProvider>
+        <div>
+          <AppBar title="ReacTodo" showMenuIconButton={false} style={styles.appBar}/>
+
+          <div style={styles.mainContent}>
+            {todos.map((todo, key) => { return <Paper style={styles.todo} key={key}>{todo}</Paper>; })}
+          </div>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+const styles = {
+  appBar: {
+    padding: '0 20%',
+  },
+
+  todo: {
+    padding: 20,
+  },
+
+  mainContent: {
+    padding: '20px 20%',
+  },
+};
+
+ReactDOM.render(<ReacTodo />, document.getElementById('app'));
+```
+
+Convenhamos que já está ficando bagunçado né? Bora separar isso?
