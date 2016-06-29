@@ -198,6 +198,6 @@ return (
 );
 ```
 
-![app-bar](example-images/app-bar.png "Nossa AppBar linda <3")
 Saca só que maaaaaaassa!
+![app-bar](example-images/app-bar.png "Nossa AppBar linda <3")
 
